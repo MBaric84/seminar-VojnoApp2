@@ -1,0 +1,10 @@
+Pritisnite tipke W i S za kretanje naprijed nazad.
+Pritisnite tipke A i D za kretanje lijevo desno.
+Pritisnite tipku C za čučanj.
+Pritisnite Space Bar za skok.
+Pritisnite lijevu tipku miša za pucanje.
+Pritisnite desnu tipku miša za ciljanje.
+Pritisnite tipku R za ponovno punjenje oružja.
+Usmjerite miša prema gore (pogled gore) kako bi ste vidjeli mapu.
+Usmjerite miša prema dolje (pogled dolje) kako bi vidjeli navigacijske strelice.
+Ako želite ponoviti upute pritisnite tipku H, ako ne želite pritisnite tipku N.
