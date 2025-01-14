@@ -4755,6 +4755,13 @@ MonoBehaviour:
   _camT: {fileID: 698624602}
   _playerT: {fileID: 413400313}
   _skyMapChildT: {fileID: 300415359}
+  minHeight: 0
+  maxHeight: 20
+  maxOffset: 50
+  defaultHeight: 10
+  defaultOffset: {x: 0, y: 0, z: 0}
+  defaultRotation: 0
+  testHeight: 15
 --- !u!4 &768889352
 Transform:
   m_ObjectHideFlags: 0
