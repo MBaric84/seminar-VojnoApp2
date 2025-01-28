@@ -1338,8 +1338,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 195549420}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 20
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4183,8 +4183,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1688973530}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 20
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4880,11 +4880,11 @@ MonoBehaviour:
   _camT: {fileID: 698624602}
   _playerT: {fileID: 413400313}
   _skyMapChildT: {fileID: 300415359}
-  heightSlider: {fileID: 0}
-  offsetXSlider: {fileID: 0}
-  offsetYSlider: {fileID: 0}
-  offsetZSlider: {fileID: 0}
-  rotationSlider: {fileID: 0}
+  heightSlider: {fileID: 1302826310}
+  offsetXSlider: {fileID: 174981704}
+  offsetYSlider: {fileID: 947316963}
+  offsetZSlider: {fileID: 688101736}
+  rotationSlider: {fileID: 2068676354}
 --- !u!4 &768889352
 Transform:
   m_ObjectHideFlags: 0
@@ -5575,8 +5575,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 202659367}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 20
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6514,8 +6514,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 44593846}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 20
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10227,8 +10227,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 111867550}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 360
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:

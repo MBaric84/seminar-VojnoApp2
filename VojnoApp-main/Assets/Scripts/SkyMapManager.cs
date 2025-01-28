@@ -31,49 +31,55 @@ public class SkyMapManager : MonoBehaviour
     {
         csvFilePath = Path.Combine(Application.persistentDataPath, "UserSettings.csv");
 
+        // Initialize positions
         playerSpawnPos = _playerT.position;
         skymapSpawnPos = _skyMapChildT.localPosition;
 
-
+        // Add more verbose debug logging
         heightSlider.onValueChanged.AddListener((value) => {
+            Debug.Log($"Height slider moved to: {value}");
             userHeightOffset = value;
-            Debug.Log($"Height changed to: {value}");
             SaveSettings();
         });
 
         offsetXSlider.onValueChanged.AddListener((value) => {
+            Debug.Log($"Offset X slider moved to: {value}");
             userOffset.x = value;
-            Debug.Log($"Offset X changed to: {value}");
             SaveSettings();
         });
 
         offsetYSlider.onValueChanged.AddListener((value) => {
+            Debug.Log($"Offset Y slider moved to: {value}");
             userOffset.y = value;
-            Debug.Log($"Offset Y changed to: {value}");
             SaveSettings();
         });
 
         offsetZSlider.onValueChanged.AddListener((value) => {
+            Debug.Log($"Offset Z slider moved to: {value}");
             userOffset.z = value;
-            Debug.Log($"Offset Z changed to: {value}");
             SaveSettings();
         });
 
         rotationSlider.onValueChanged.AddListener((value) => {
+            Debug.Log($"Rotation slider moved to: {value}");
             userRotationAngle = value;
-            Debug.Log($"Rotation changed to: {value}");
             SaveSettings();
         });
 
-
+        // Load settings after setting up listeners
         LoadSettings();
 
-
+        // Initialize slider values
         heightSlider.value = userHeightOffset;
         offsetXSlider.value = userOffset.x;
         offsetYSlider.value = userOffset.y;
         offsetZSlider.value = userOffset.z;
         rotationSlider.value = userRotationAngle;
+
+        Debug.Log("Sliders initialized with values: " +
+            $"Height: {heightSlider.value}, " +
+            $"Offset: ({offsetXSlider.value}, {offsetYSlider.value}, {offsetZSlider.value}), " +
+            $"Rotation: {rotationSlider.value}");
     }
 
     private void SaveSettings()
@@ -102,29 +108,29 @@ public class SkyMapManager : MonoBehaviour
 
     void Update()
     {
+        // Calculate the offset position based on the camera's rotation and radius
         Vector3 offset = new Vector3(
             Mathf.Sin((_camT.eulerAngles.y + userRotationAngle) * Mathf.Deg2Rad), 
             0, 
             Mathf.Cos((_camT.eulerAngles.y + userRotationAngle) * Mathf.Deg2Rad)
         ) * _radius;
 
+        // Apply user-defined offset (as a one-time offset, not continuous)
+        Vector3 totalOffset = offset + userOffset;
 
-        offset += userOffset;
-
+        // Calculate the new position relative to the player's current position
         Vector3 newPosition = new Vector3(
-            _playerT.position.x + offset.x, 
-            _parentT.position.y + userHeightOffset, 
-            _playerT.position.z + offset.z
+            _playerT.position.x + totalOffset.x,
+            playerSpawnPos.y + userHeightOffset, // Use initial height as reference
+            _playerT.position.z + totalOffset.z
         );
-
 
         _parentT.position = newPosition;
         _skyMapChildT.localPosition = new Vector3(
             skymapSpawnPos.x + (playerSpawnPos.x - _playerT.position.x),
-            _skyMapChildT.localPosition.y,
+            skymapSpawnPos.y, // Keep original Y position
             skymapSpawnPos.z + (playerSpawnPos.z - _playerT.position.z)
         );
-
 
         Debug.Log($"Current Settings - Height: {userHeightOffset}, Offset: {userOffset}, Rotation: {userRotationAngle}");
     }
