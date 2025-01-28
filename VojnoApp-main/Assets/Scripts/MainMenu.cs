@@ -13,18 +13,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void OpenMapSettings()
-    {
-        mainMenuPanel.SetActive(false);
-        mapSettingsPanel.SetActive(true);
-    }
-
-    public void CloseMapSettings()
-    {
-        mapSettingsPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
-    }
-
     public void OpenTutorial()
     {
         SceneManager.LoadScene("Tutorial");
