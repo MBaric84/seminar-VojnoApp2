@@ -55,14 +55,16 @@ public class SkyMapManager : MonoBehaviour
         });
 
         offsetZSlider.onValueChanged.AddListener((value) => {
-            Debug.Log($"Offset Z slider moved to: {value}");
+            Debug.Log($"Offset Z slider moved to: {value}, current userOffset.z: {userOffset.z}");
             userOffset.z = value;
+            Debug.Log($"After update - userOffset.z: {userOffset.z}");
             SaveSettings();
         });
 
         rotationSlider.onValueChanged.AddListener((value) => {
-            Debug.Log($"Rotation slider moved to: {value}");
+            Debug.Log($"Rotation slider moved to: {value}, current userRotationAngle: {userRotationAngle}");
             userRotationAngle = value;
+            Debug.Log($"After update - userRotationAngle: {userRotationAngle}");
             SaveSettings();
         });
 
@@ -108,20 +110,20 @@ public class SkyMapManager : MonoBehaviour
 
     void Update()
     {
-        // Calculate the offset position based on the camera's rotation and radius
+        // Add specific debug for Z offset and rotation
+        Debug.Log($"Update - Z offset: {userOffset.z}, Rotation: {userRotationAngle}");
+        
         Vector3 offset = new Vector3(
             Mathf.Sin((_camT.eulerAngles.y + userRotationAngle) * Mathf.Deg2Rad), 
             0, 
             Mathf.Cos((_camT.eulerAngles.y + userRotationAngle) * Mathf.Deg2Rad)
         ) * _radius;
 
-        // Apply user-defined offset (as a one-time offset, not continuous)
         Vector3 totalOffset = offset + userOffset;
 
-        // Calculate the new position relative to the player's current position
         Vector3 newPosition = new Vector3(
             _playerT.position.x + totalOffset.x,
-            playerSpawnPos.y + userHeightOffset, // Use initial height as reference
+            playerSpawnPos.y + userHeightOffset,
             _playerT.position.z + totalOffset.z
         );
 
