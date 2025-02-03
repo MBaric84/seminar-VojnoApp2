@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject winScreen;
     public GameObject loseScreen;
     public GameObject pauseScreen;
+    public GameObject slidersPanel;
 
     public GameObject winScreenBackround;
     public GameObject loseScreenBackround;
@@ -57,15 +58,26 @@ public class UIManager : MonoBehaviour
         SetActivePlayerScreen(false);
         pauseScreenBackround.SetActive(true);
         pauseScreen.SetActive(true);
+        ToggleSliders(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        foreach (var button in pauseScreen.GetComponentsInChildren<UnityEngine.UI.Button>())
+        {
+        button.interactable = true;
+        }
+    }
+
+    public void ToggleSliders(bool isVisible)
+    {
+    slidersPanel.SetActive(isVisible);
     }
 
     public void ResumeGame()
     {
         pauseScreenBackround.SetActive(false);
         pauseScreen.SetActive(false);
+        ToggleSliders(false);
         // activePlayerScreen.SetActive(true);
         SetActivePlayerScreen(true);
         Time.timeScale = 1;
