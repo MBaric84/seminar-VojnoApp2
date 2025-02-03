@@ -34,7 +34,6 @@ public class SkyMapManager : MonoBehaviour
         playerSpawnPos = _playerT.position;
         skymapSpawnPos = _skyMapChildT.localPosition;
 
-        // Add more verbose debug logging
         heightSlider.onValueChanged.AddListener((value) => {
             userHeightOffset = value;
             SaveSettings();
@@ -55,10 +54,8 @@ public class SkyMapManager : MonoBehaviour
             SaveSettings();
         });
 
-        // Load settings after setting up listeners
         LoadSettings();
         
-        // Initialize slider values
         heightSlider.value = userHeightOffset;
         offsetXSlider.value = userOffset.x;
         offsetZSlider.value = userOffset.z;
@@ -97,6 +94,7 @@ public class SkyMapManager : MonoBehaviour
     
     void Update()
     {
+        /*
         Vector3 offset = new Vector3(
             Mathf.Sin((_camT.eulerAngles.y + userRotationAngle) * Mathf.Deg2Rad), 
             0, 
@@ -117,5 +115,11 @@ public class SkyMapManager : MonoBehaviour
             skymapSpawnPos.y, // Keep original Y position
             skymapSpawnPos.z + (playerSpawnPos.z - _playerT.position.z)
         );
+        */
+        Vector3 newPosition = playerSpawnPos + new Vector3(userOffset.x, userHeightOffset, userOffset.z);
+        Quaternion newRotation = Quaternion.Euler(0, userRotationAngle, 0);
+        _parentT.SetPositionAndRotation(newPosition, newRotation);
+
+        Debug.Log($"SkyMap Updated: Position {newPosition}, Rotation {newRotation.eulerAngles.y}");
     }
 }
